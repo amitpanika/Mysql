@@ -58,3 +58,18 @@ mysql> select * from employee_payroll;
 +----+---------+--------+------------+
 4 rows in set (0.00 sec)
 
+
+/*
+/ *********___UC_5___***************
+/*
+
+
+mysql> select salary from employee_payroll where name ='bill';
++--------+
+| salary |
++--------+
+| 100000 |
+| 100000 |
++--------+
+2 rows in set (0.00 sec)
+
