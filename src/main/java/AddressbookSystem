@@ -1,0 +1,113 @@
+UC_1.....
+
+
+mysql>  create database AddressBookService;
+Query OK, 1 row affected (0.03 sec)
+
+mysql> show databases;
++--------------------+
+| Database           |
++--------------------+
+| addressbookservice |
+| information_schema |
+| mysql              |
+| payroll_service    |
+| performance_schema |
+| sys                |
++--------------------+
+6 rows in set (0.02 sec)
+
+
+UC_2....
+
+mysql> use addressbookservice;
+Database changed
+mysql>  CREATE TABLE Contact(FirstName varchar(30), LastName varchar(30), Address varchar(50), City varchar(50), Zip int, PhoneNumber int, Email varchar(50));
+Query OK, 0 rows affected (0.10 sec)
+
+mysql> describe contact
+    -> ^C
+mysql> describe contact;
++-------------+-------------+------+-----+---------+-------+
+| Field       | Type        | Null | Key | Default | Extra |
++-------------+-------------+------+-----+---------+-------+
+| FirstName   | varchar(30) | YES  |     | NULL    |       |
+| LastName    | varchar(30) | YES  |     | NULL    |       |
+| Address     | varchar(50) | YES  |     | NULL    |       |
+| City        | varchar(50) | YES  |     | NULL    |       |
+| Zip         | int         | YES  |     | NULL    |       |
+| PhoneNumber | int         | YES  |     | NULL    |       |
+| Email       | varchar(50) | YES  |     | NULL    |       |
++-------------+-------------+------+-----+---------+-------+
+7 rows in set (0.01 sec)
+
+
+UC_3....
+
+mysql>   INSERT INTO Contact VALUES("amit", "panika", "shahdol", "madhyapradesh", 123456, 123123, "amitpanika.com");
+        Query OK, 1 row affected (0.01 sec)
+
+
+UC_4.....
+
+mysql> UPDATE Contact SET Address = "NY" where FirstName = "Amitpanika";
+Query OK, 0 rows affected (0.00 sec)
+Rows matched: 0  Changed: 0  Warnings: 0
+
+
+mysql>  select * from Contact;
++-----------+----------+------------+---------------+--------+-------------+----------------+
+| FirstName | LastName | Address    | City          | Zip    | PhoneNumber | Email          |
++-----------+----------+------------+---------------+--------+-------------+----------------+
+| Moinuddin | Asraf    | Mansarovar | Jaipur        | 123456 |      123123 | moin@gmail.com |
+| amit      | panika   | shahdol    | madhyapradesh | 123456 |      123123 | amitpanika.com |
++-----------+----------+------------+---------------+--------+-------------+----------------+
+2 rows in set (0.00 sec)
+
+
+UC_5:............
+
+mysql>  delete from Contact where FirstName = "amit";
+Query OK, 1 row affected (0.01 sec)
+
+
+UC_6:.....
+
+
+mysql> select * from Contact where city = "madhyapradesh" or Zip = 123456;
+Empty set (0.00 sec)
+
+
+UC_7........
+
+mysql> SELECT COUNT(City) FROM Contact GROUP BY City;
++-------------+
+| COUNT(City) |
++-------------+
+|           1 |
++-------------+
+1 row in set (0.00 sec)
+
+
+
+UC_9:.
+
+
+mysql>  ALTER TABLE Contact ADD Type varchar(30);
+Query OK, 0 rows affected (0.04 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+mysql> describe contact;
++-------------+-------------+------+-----+---------+-------+
+| Field       | Type        | Null | Key | Default | Extra |
++-------------+-------------+------+-----+---------+-------+
+| FirstName   | varchar(30) | YES  |     | NULL    |       |
+| LastName    | varchar(30) | YES  |     | NULL    |       |
+| Address     | varchar(50) | YES  |     | NULL    |       |
+| City        | varchar(50) | YES  |     | NULL    |       |
+| Zip         | int         | YES  |     | NULL    |       |
+| PhoneNumber | int         | YES  |     | NULL    |       |
+| Email       | varchar(50) | YES  |     | NULL    |       |
+| Type        | varchar(30) | YES  |     | NULL    |       |
++-------------+-------------+------+-----+---------+-------+
+8 rows in set (0.00 sec)
